@@ -25,7 +25,7 @@
             seeLocation = false;
         });
         document.getElementById('stop').addEventListener('click', function () {
-            seeLocation =true;
+            seeLocation = true;
         });
         var socket = io.connect('https://location-tracker1.herokuapp.com');
         socket.on('userLocation', data => {
@@ -43,7 +43,9 @@
             var myLatLng = { lat: latitude, lng: longitude };
 
             map = new google.maps.Map(document.getElementById('map'), {
-                center: myLatLng, zoom: 22
+                center: myLatLng,
+                zoom: 22,
+                mapTypeId: 'satellite'
             });
 
             var marker = new google.maps.Marker({
