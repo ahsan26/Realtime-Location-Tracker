@@ -13,7 +13,7 @@
     <button id="send">Send Location</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script>
-        var socket = io.connect('https://location-tracker1.herokuapp.com/');
+        var socket = io.connect('https://location-tracker1.herokuapp.com');
         document.getElementById('get').addEventListener('click', function () {
             window.location.assign('/location.html');
         });
@@ -22,7 +22,7 @@
                 getLocation().then(location => {
                     socket.emit('location', location);
                 });
-            }, 1500);
+            }, 8000);
         });
         function getLocation() {
             return new Promise((resolve, rejet) => {

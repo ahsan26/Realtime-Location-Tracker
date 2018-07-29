@@ -15,6 +15,7 @@ const io = socket(server);
 io.on('connection', function (socket) {
     console.log('Client Connected', socket.id);
     socket.on('location', function (data) {
+        console.log(data);
         io.sockets.emit('userLocation', data);
     });
 });
