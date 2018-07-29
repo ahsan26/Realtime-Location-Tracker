@@ -6,24 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Location</title>
+    <style>
+        #map {
+            height: 300px;
+            width: 600px;
+        }
+    </style>
 </head>
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-    <!-- <iframe src="" width="600" height="450" frameborder="0" style="border:0" allowfullscreen id="map"></iframe> -->
     <div id="map"></div>
-    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3149.7148073018548!2d144.9784263153204!3d-37.86696297974281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDUyJzAxLjEiUyAxNDTCsDU4JzUwLjIiRQ!5e0!3m2!1sen!2s!4v1532888618440" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe> -->
     <script>
-        var socket = io.connect('https://location-tracker1.herokuapp.com/');
+        var socket = io.connect('https://location-tracker1.herokuapp.com');
         socket.on('userLocation', data => {
             // document.getElementById('map').src = `http://maps.google.com/?q=${data.lat},${data.long}`;
-    console.log(data);
-            initialize(data.lat, data.long);
+            console.log(data);
+            initMap(data.lat, data.long);
         });
         var map;
-        function initialize(lat, long) {
-            var latitude = lat||27.7172453; // YOUR LATITUDE VALUE
-            var longitude = long||85.3239605; // YOUR LONGITUDE VALUE
+        function initMap(lat, long) {
+            var latitude = lat || 27.7172453; // YOUR LATITUDE VALUE
+            var longitude = long || 85.3239605; // YOUR LONGITUDE VALUE
 
             var myLatLng = { lat: latitude, lng: longitude };
 
@@ -43,7 +47,7 @@
             });
         }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEubgHD4ZQEUSYGTsQdTv1p9Zn4BWEcqo&callback=initialize" async
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEubgHD4ZQEUSYGTsQdTv1p9Zn4BWEcqo&callback=initMap" async
         defer></script>
 </body>
 

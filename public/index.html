@@ -22,7 +22,7 @@
                 getLocation().then(location => {
                     socket.emit('location', location);
                 });
-            }, 8000);
+            }, 2000);
         });
         function getLocation() {
             return new Promise((resolve, rejet) => {
