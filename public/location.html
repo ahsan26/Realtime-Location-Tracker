@@ -17,11 +17,15 @@
 <body>
     <div id="map"></div>
     <button id='stop'>Stop Seeing Location</button>
+    <button id='start'>Start Seeing Location</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
     <script>
         var seeLocation = true;
         document.getElementById('stop').addEventListener('click', function () {
             seeLocation = false;
+        });
+        document.getElementById('stop').addEventListener('click', function () {
+            seeLocation =true;
         });
         var socket = io.connect('https://location-tracker1.herokuapp.com');
         socket.on('userLocation', data => {
@@ -39,7 +43,7 @@
             var myLatLng = { lat: latitude, lng: longitude };
 
             map = new google.maps.Map(document.getElementById('map'), {
-                center: myLatLng, zoom: 20
+                center: myLatLng, zoom: 22
             });
 
             var marker = new google.maps.Marker({
